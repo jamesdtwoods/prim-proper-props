@@ -3,12 +3,12 @@ import axios from 'axios';
 import './App.css';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
+import GuestList from '../GuestList/GuestList.jsx';
 
 function App() {
   let [guestList, setGuestList] = useState([]);
   let [newGuestName, setNewGuestName] = useState('');
   let [newGuestMeal, setNewGuestMeal] = useState('false');
-
   //On load, get guests
   useEffect(() => {
     getGuests()
@@ -100,23 +100,7 @@ function App() {
         </div>
         <button type="submit">Add Guest</button>
       </form>
-      <h2>Guest List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Kid's Meal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {guestList.map(guest => (
-            <tr key={guest.id}>
-              <td>{guest.name}</td>
-              <td>{String(guest.kidsMeal)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <GuestList guestList={guestList} />
       <h2>Dinner Supplies</h2>
       <div>
         Spoons: {guestList.length * 2}
