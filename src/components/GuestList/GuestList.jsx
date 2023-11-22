@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Guest from '../Guest/Guest.jsx';
 
 function GuestList( {guestList, getGuests} ) {
 
@@ -29,15 +30,7 @@ function GuestList( {guestList, getGuests} ) {
             </thead>
             <tbody>
                 {guestList.map(guest => (
-                <tr key={guest.id}>
-                    <td>{guest.name}</td>
-                    <td>{String(guest.kidsMeal)}</td> 
-                    <td>
-                        <button onClick={() => removeGuest(guest.id)}>
-                            Remove Guest
-                        </button>
-                    </td>
-                </tr>
+                <Guest guest={guest} removeGuest={removeGuest} />
                 ))}
             </tbody>
             </table>
