@@ -32,7 +32,7 @@ function App() {
       <Header />
       <PartyLeader leader={guestList[0]} />
       <GuestForm getGuests={getGuests} />
-      <GuestList guestList={guestList} />
+      <GuestList guestList={guestList} getGuests={getGuests} />
       <DinnerSupplies guestList={guestList} />
       <Footer />
     </div>

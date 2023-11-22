@@ -37,5 +37,21 @@ router.post('/', (req, res) => {
         })
 })
 
+// Setup a DELETE route to remove a guest from the database
+router.delete('/:id', (req, res) => {
+    const sqlQueryText = `
+    DELETE FROM "guests"
+	    WHERE "id" = ($1);
+    `
+    const sqlValues = [req.params.id];
+    pool.query(sqlQueryText, sqlValues)
+    .then((result) => {
+        res.sendStatus(200);
+      }).catch((dbError) => {
+        console.log('DELETE /guest SQL query failed:', dbError);
+        res.sendStatus(500);
+      });
+});
+
 
 module.exports = router;
